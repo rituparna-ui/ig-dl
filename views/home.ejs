@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ig-Dl</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor"
+      crossorigin="anonymous"
+    />
+  </head>
+  <body>
+    <div class="container mt-3">
+      <h1>Download Public Instagram Media</h1>
+      <form action="/" method="POST">
+        <div class="mb-3">
+          <label for="url" class="form-label">Instagram URL</label>
+          <input
+            type="text"
+            class="form-control"
+            id="url"
+            placeholder="url"
+            name="url"
+            required
+          />
+        </div>
+        <div class="mb-3">
+          <button type="submit" class="btn btn-primary">Download</button>
+        </div>
+      </form>
+    </div>
+    <% if(data.length>0 && media_type==1){ %>
+    <div class="container text-center">
+      <h2>Available Formats</h2>
+      <h3>Click the download button or right click and "Save link as"</h3>
+      <table class="table table-striped">
+        <tr>
+          <th>Width</th>
+          <th>Height</th>
+          <th></th>
+        </tr>
+        <% for(let i = 0; i < data.length; i++){ %>
+        <tr>
+          <td><%= data[i].width %></td>
+          <td><%= data[i].height %></td>
+          <td>
+            <a
+              class="btn btn-secondary"
+              href="<%= data[i].url %>"
+              download="<%= caption  %> "
+              >Download</a
+            >
+          </td>
+        </tr>
+        <% } %>
+      </table>
+    </div>
+    <% } %> <% if(data.length>0 && media_type==8){ %>
+    <div class="container text-center">
+      <h2>This posts contains multiple images and videos</h2>
+      <h3>Click the download button or right click and "Save link as"</h3>
+      <table class="table table-striped">
+        <tr>
+          <th>No.</th>
+          <th></th>
+        </tr>
+        <% for(let i = 0; i < data.length; i++){ %>
+        <tr>
+          <td><%= i+1 %></td>
+          <td>
+            <a
+              class="btn btn-secondary"
+              href="<%= data[i].url %>"
+              download="<%= caption  %>"
+              >Download</a
+            >
+          </td>
+        </tr>
+        <% } %>
+      </table>
+    </div>
+    <% } %>
+
+    <footer class="text-center">
+      <span>
+        Made with <i style="color: red; font-size: x-large">&hearts;</i> By
+        Rituparna
+      </span>
+    </footer>
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>
